@@ -1,0 +1,130 @@
+= META Format Specification Documents
+:toc:
+
+== Overview
+
+This directory contains the formal specification infrastructure for the META
+(Machine-readable Engineering and Technical Architecture) format, prepared
+for submission to standards bodies including IETF and IANA.
+
+== Document Index
+
+=== Core Specification
+
+link:META-FORMAT-SPEC.adoc[META-FORMAT-SPEC.adoc]::
+  The complete format specification in IETF Internet-Draft style. Defines
+  all sections, data types, parsing requirements, and security considerations.
+
+=== Grammar
+
+link:abnf/meta.abnf[abnf/meta.abnf]::
+  Formal ABNF (Augmented Backus-Naur Form) grammar per RFC 5234. Defines
+  the complete syntax including module declarations, core sections, and
+  S-expression primitives.
+
+=== Schema
+
+link:schema/meta.schema.json[schema/meta.schema.json]::
+  JSON Schema (Draft 2020-12) for validating META files in JSON binding
+  format. Useful for tooling and IDE integration.
+
+=== Standards Track
+
+link:STANDARDS-TRACK.adoc[STANDARDS-TRACK.adoc]::
+  Comprehensive analysis of potential standards bodies (IETF, IANA, ISO,
+  W3C, SPDX) and phased roadmap to formal standardization.
+
+=== Policy Documents
+
+link:VERSION-POLICY.adoc[VERSION-POLICY.adoc]::
+  Version evolution policy following Semantic Versioning 2.0.0. Defines
+  compatibility guarantees, deprecation process, and governance.
+
+link:IANA-MEDIA-TYPE.adoc[IANA-MEDIA-TYPE.adoc]::
+  Complete IANA media type registration template for `application/meta+scheme`,
+  ready for submission per RFC 6838.
+
+== Quick Start
+
+To read the specification:
+
+1. Start with link:META-FORMAT-SPEC.adoc[META-FORMAT-SPEC.adoc] for the complete format definition
+2. Review link:../examples/[examples/] for practical usage
+3. Use link:schema/meta.schema.json[JSON Schema] for validation tooling
+
+To contribute to standardization:
+
+1. Review link:STANDARDS-TRACK.adoc[STANDARDS-TRACK.adoc] for the roadmap
+2. Check link:VERSION-POLICY.adoc[VERSION-POLICY.adoc] for change procedures
+3. Open issues or PRs on the GitHub repository
+
+== Format Summary
+
+META files use Scheme S-expression syntax to encode:
+
+* **Architecture Decisions** (`architecture-decisions`) - ADRs with status, context, decision, consequences
+* **Development Practices** (`development-practices`) - Code style, security, testing, versioning policies
+* **Design Rationale** (`design-rationale`) - Narrative explanations of key decisions
+
+=== Example
+
+[source,scheme]
+----
+;; SPDX-License-Identifier: MIT
+;; SPDX-FileCopyrightText: 2025 Example Author
+
+(define-module (my-project meta)
+  #:export (architecture-decisions development-practices design-rationale))
+
+(define architecture-decisions
+  '((adr-001
+     (title . "Use PostgreSQL")
+     (status . "accepted")
+     (date . "2025-01-15")
+     (context . "Need reliable relational database")
+     (decision . "Use PostgreSQL 16+")
+     (consequences . ("Strong consistency" "Excellent tooling")))))
+
+(define development-practices
+  '((testing
+     (framework . "pytest")
+     (coverage-minimum . 80))))
+
+(define design-rationale
+  '((why-postgresql
+     "PostgreSQL provides the best balance of features and reliability.")))
+----
+
+== Standards Track Summary
+
+[cols="1,2,1"]
+|===
+|Body |Role |Status
+
+|IETF
+|Informational RFC (primary specification)
+|Phase 1: Community Spec
+
+|IANA
+|Media type registration (`application/meta+scheme`)
+|Pending Phase 2
+
+|SPDX
+|Integration for license/dependency metadata
+|Future consideration
+
+|ISO
+|Formal international standard
+|Future consideration (Year 5+)
+|===
+
+== Contributing
+
+See the main repository CONTRIBUTING.md for contribution guidelines.
+
+Specification changes follow the process defined in VERSION-POLICY.adoc.
+
+== License
+
+Specifications are released under MIT License.
+Copyright (c) 2025 Jonathan D.A. Jewell.

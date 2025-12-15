@@ -1,1 +1,216 @@
+= META.scm
+:toc: left
+:toclevels: 2
+:icons: font
 
+Machine-readable Engineering and Technical Architecture files.
+
+== What is META.scm?
+
+META.scm is a format specification for documenting software project metadata,
+architecture decisions, and development practices in machine-readable
+Scheme S-expression syntax.
+
+[source,scheme]
+----
+;; SPDX-License-Identifier: MIT
+(define-module (my-project meta)
+  #:export (architecture-decisions development-practices design-rationale))
+
+(define architecture-decisions
+  '((adr-001
+     (title . "Use Event Sourcing")
+     (status . "accepted")
+     (date . "2025-01-15")
+     (context . "Need complete audit trail for orders")
+     (decision . "Implement event sourcing for order service")
+     (consequences . ("Full history" "Replay capability" "Eventual consistency")))))
+
+(define development-practices
+  '((testing (framework . "pytest") (coverage-minimum . 80))
+    (versioning (scheme . "Semantic Versioning 2.0.0"))))
+
+(define design-rationale
+  '((why-event-sourcing
+     "Event sourcing provides immutable audit trail and temporal queries.")))
+----
+
+== Why META.scm?
+
+[cols="1,3"]
+|===
+|Feature |Benefit
+
+|*Machine-Readable*
+|Tooling can parse, validate, and generate documentation
+
+|*Human-Readable*
+|S-expressions are readable without special editors
+
+|*Structured ADRs*
+|Architecture decisions in queryable format
+
+|*VCS-Friendly*
+|Plain text diffs, merges, and history
+
+|*Extensible*
+|Add custom sections without breaking compatibility
+|===
+
+== Core Sections
+
+=== Architecture Decisions (`architecture-decisions`)
+
+Structured Architecture Decision Records (ADRs):
+
+* Unique identifier (`adr-NNN`)
+* Title, status, date
+* Context (problem statement)
+* Decision (what was decided)
+* Consequences (implications)
+
+=== Development Practices (`development-practices`)
+
+Codified development standards:
+
+* `code-style` - Formatters, linters, type systems
+* `security` - Security requirements
+* `testing` - Test frameworks, coverage requirements
+* `versioning` - Version scheme, changelog format
+* `deployment` - Deployment strategy, environments
+* `review` - Code review process
+
+=== Design Rationale (`design-rationale`)
+
+Narrative explanations of key decisions, linking to ADRs.
+
+== Getting Started
+
+=== Create a META.scm File
+
+[source,scheme]
+----
+;; SPDX-License-Identifier: MIT
+;; SPDX-FileCopyrightText: 2025 Your Name
+
+;;; META.scm — Architecture Decisions and Development Practices
+;;; your-project
+
+(define-module (your-project meta)
+  #:export (architecture-decisions
+            development-practices
+            design-rationale))
+
+(define architecture-decisions
+  '((adr-001
+     (title . "Your First Decision")
+     (status . "accepted")
+     (date . "2025-01-01")
+     (context . "Describe the problem or situation")
+     (decision . "What you decided")
+     (consequences . ("Consequence 1" "Consequence 2")))))
+
+(define development-practices
+  '((code-style
+     (formatter . "your-formatter")
+     (linter . "your-linter"))))
+
+(define design-rationale
+  '((why-this-decision
+     "Explain the reasoning behind your key decisions.")))
+----
+
+=== Validate with JSON Schema
+
+For environments with JSON Schema support, convert to JSON and validate
+against `spec/schema/meta.schema.json`.
+
+== Specification
+
+The formal specification is in the `spec/` directory:
+
+* link:spec/META-FORMAT-SPEC.adoc[META-FORMAT-SPEC.adoc] - Complete specification
+* link:spec/abnf/meta.abnf[abnf/meta.abnf] - ABNF grammar
+* link:spec/schema/meta.schema.json[schema/meta.schema.json] - JSON Schema
+* link:spec/VERSION-POLICY.adoc[VERSION-POLICY.adoc] - Version policy
+* link:spec/STANDARDS-TRACK.adoc[STANDARDS-TRACK.adoc] - Standardization roadmap
+* link:spec/IANA-MEDIA-TYPE.adoc[IANA-MEDIA-TYPE.adoc] - Media type registration
+
+== Examples
+
+See the link:examples/[examples/] directory:
+
+* link:examples/minimal.scm[minimal.scm] - Minimal valid META file
+* link:examples/comprehensive.scm[comprehensive.scm] - Full-featured example
+
+== Standards Track
+
+META.scm is on track for formal standardization:
+
+[cols="1,2,1"]
+|===
+|Phase |Target |Status
+
+|Community Specification
+|Reference implementations, community adoption
+|*In Progress*
+
+|IANA Registration
+|`application/meta+scheme` media type
+|Planned
+
+|IETF Informational RFC
+|Formal format specification
+|Planned
+|===
+
+See link:spec/STANDARDS-TRACK.adoc[STANDARDS-TRACK.adoc] for the full roadmap.
+
+== Media Type
+
+* **MIME Type**: `application/meta+scheme`
+* **File Extension**: `.scm` (conventionally `META.scm`)
+* **Encoding**: UTF-8
+
+== ADR Status Values
+
+[cols="1,3"]
+|===
+|Status |Meaning
+
+|`proposed`
+|Under consideration
+
+|`accepted`
+|Decided and in effect
+
+|`deprecated`
+|No longer recommended
+
+|`superseded`
+|Replaced by another decision
+
+|`rejected`
+|Considered but not adopted
+|===
+
+== Tooling (Planned)
+
+* VS Code extension with syntax highlighting and validation
+* CLI tool for linting and documentation generation
+* CI/CD integration for ADR policy enforcement
+* Markdown/HTML documentation generator
+
+== Contributing
+
+See link:CONTRIBUTING.md[CONTRIBUTING.md] for contribution guidelines.
+
+== License
+
+MIT License. Copyright (c) 2025 Jonathan D.A. Jewell.
+
+== Related Work
+
+* https://adr.github.io/madr/[MADR] - Markdown ADR format
+* https://spdx.dev/[SPDX] - Software Package Data Exchange
+* https://www.iso.org/standard/81870.html[ISO/IEC 5962:2021] - SPDX as ISO standard
