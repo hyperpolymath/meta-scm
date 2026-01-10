@@ -1,6 +1,9 @@
 = META.scm
+image:https://img.shields.io/badge/license-PMPL--1.0-blue.svg[License,link="https://github.com/hyperpolymath/palimpsest-license"]
 
-image:https://img.shields.io/badge/license-AGPL--3.0-blue.svg[AGPL-3.0,link="https://www.gnu.org/licenses/agpl-3.0"] image:https://img.shields.io/badge/philosophy-Palimpsest-purple.svg[Palimpsest,link="https://github.com/hyperpolymath/palimpsest-licence"]
+
+
+
 :toc: left
 :toclevels: 2
 :icons: font
@@ -79,7 +82,7 @@ Scheme S-expression syntax.
 
 [source,scheme]
 ----
-;; SPDX-License-Identifier: MIT
+;; SPDX-License-Identifier: PMPL-1.0
 (define-module (my-project meta)
   #:export (architecture-decisions development-practices design-rationale))
 
@@ -159,7 +162,7 @@ Narrative explanations of key decisions, linking to ADRs.
 
 [source,scheme]
 ----
-;; SPDX-License-Identifier: MIT
+;; SPDX-License-Identifier: PMPL-1.0
 ;; SPDX-FileCopyrightText: 2025 Your Name
 
 ;;; META.scm — Architecture Decisions and Development Practices
@@ -308,7 +311,7 @@ See link:CONTRIBUTING.md[CONTRIBUTING.md] for contribution guidelines.
 
 == License
 
-MIT License. Copyright (c) 2025 Jonathan D.A. Jewell.
+Palimpsest-MPL License v1.0 (PMPL-1.0). Copyright (c) 2025 Jonathan D.A. Jewell.
 
 == Related Projects
 
